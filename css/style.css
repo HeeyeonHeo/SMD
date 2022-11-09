@@ -46,6 +46,14 @@ p {
   line-height: 26px;
 }
 
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border-style: none;
+}
+
 .container {
   max-width: 1440px;
   /* outline: 2px solid #333; */
@@ -71,6 +79,12 @@ p {
   z-index: 1;
 }
 
+@media (max-width: 1080px) {
+  #gnb {
+    display: none;
+  }
+}
+
 /* 1단계 메뉴 */
 #gnb .depth1 {
   display: flex;
@@ -93,8 +107,13 @@ p {
   border: 1px solid #ccc;
   padding: 10px;
   margin-top: 26px;
-  display: none;
+  /* display: none; */
   text-align: left;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: 0.5s;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #gnb .depth2 > li {
@@ -108,7 +127,9 @@ p {
 /* hover 액션 */
 /* depth1 li에 마우스가 올라가면 depth2 표시 */
 #gnb .depth1 > li:hover .depth2 {
-  display: block;
+  /* display: block; */
+  max-height: 200px;
+  opacity: 1;
 }
 
 #gnb .depth1 > li > a:hover {
@@ -118,6 +139,7 @@ p {
 #gnb .depth2 > li > a:hover {
   text-decoration: underline;
 }
+
 
 #btn-toggle {
   position: absolute;
@@ -277,11 +299,14 @@ p {
   height: 80vh;
   background: #fff;
   left: calc(50%);
-  top: calc(50%);
+  top: calc(40%);
   /* 반만 땡김 */
   transform: translateX(-50%) translateY(-50%);
   z-index: 1000;
   padding: 40px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transition: 1s;
 }
 
 #site-map-menu .container {
@@ -310,7 +335,7 @@ p {
   border: none;
   background: rgba(255, 255, 255, 0);
   position: absolute;
-  left: 100%;
+  left: 95%;
   bottom: 95%;
 }
 
@@ -354,4 +379,5 @@ p {
 
 #site-map-menu.show {
   display: block;
+  opacity: 1;
 }
